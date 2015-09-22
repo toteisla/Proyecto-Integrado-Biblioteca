@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ticketLibro" language="groovy" pageWidth="600" pageHeight="200" orientation="Landscape" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36c97820-fac2-44d1-8df6-fd24f07143a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CopiaID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select CopiaID,ISBN from Copias_Libros CL, Libros L where CL.BookID = L.BookID AND CopiaID = $P{CopiaID};]]>
+	</queryString>
+	<field name="CopiaID" class="java.lang.Integer"/>
+	<field name="ISBN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b168b660-30ae-4d89-873f-48c4088af2b5" x="0" y="0" width="560" height="34"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Libro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="544da248-d705-4059-bef7-375ad43a438d" x="0" y="62" width="560" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISBN]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c1a0f28c-871c-46b6-a3ac-dbb1aed1fb78" x="0" y="34" width="560" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CopiaID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0156abe0-d761-4fd6-b5de-cf9c444c6882" x="0" y="100" width="560" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ISBN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
